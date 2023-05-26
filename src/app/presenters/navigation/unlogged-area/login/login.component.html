@@ -1,0 +1,12 @@
+<div class="login unlogged-area">
+    <div class="form-container">
+        <form [formGroup]="form">
+            <app-custom-input label="Email" name="email" [form]="form" formControlName="email" [errors]="errors['email']"></app-custom-input>
+            <app-custom-input label="Senha" name="password" [form]="form" formControlName="password" [errors]="errors['password']"></app-custom-input>
+        </form>
+        <app-custom-submit-button [loading]="loadingForm" (submit)="onSubmit()"></app-custom-submit-button>
+        <div class="bottom-links">
+            <a routerLink="/forgot-password"><p>Esqueci minha senha</p></a>
+        </div>
+    </div>
+</div>

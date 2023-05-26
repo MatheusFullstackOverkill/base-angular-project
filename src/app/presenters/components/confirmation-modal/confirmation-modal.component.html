@@ -1,0 +1,13 @@
+<app-custom-dialog 
+customClass="confirmation-modal {{customClass}}"
+[showCloseBtn]="false"
+[isVisible]="isVisible"
+[title]="title" >
+  <div class="confirmation-modal-content">
+    <div class="confirmation-modal-dynamic-content" *ngIf="dynamicContent !== '' " [innerHTML]="dynamicContent"></div>
+    <div class="confirmation-modal-actions">
+      <button #confirmBtn class="secondary" (click)="onSelectOption(true)">Confirmar</button>
+      <button #cancelBtn class="cancel" (click)="onSelectOption(false)">Recusar</button>
+    </div>
+  </div>
+</app-custom-dialog>

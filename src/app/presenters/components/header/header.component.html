@@ -1,0 +1,18 @@
+<div class="header">
+    <div #userMenuContainer class="user-menu-container" [ngClass]="{ 'opened': openMenu }">
+        <div class="user-data">
+            <!-- <h4 *ngIf="userData">{{ userData.first_name }} {{ userData.last_name }}</h4> -->
+            <img class="arrow" src="../../../../assets/icons/arrow-down-menu.svg"/>
+        </div>
+        <div class="user-menu">
+            <ul>
+                <li routerLink="/profile">Meu perfil</li>
+                <li (click)="logoutUser()" class="logout-li">
+                    <img src="../../../../assets/icons/logout.svg"/>
+                    <span>Sair</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-menu></app-menu>

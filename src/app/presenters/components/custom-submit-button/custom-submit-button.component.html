@@ -1,0 +1,3 @@
+<button [class]="customClass+' submit-btn custom-submit-button'" [disabled]="loading" (click)="onSubmit()">
+    {{ loading ? loadingText : text }}
+</button>

@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+@import ./variables.sass
+
+@font-face
+    font-family: 'Roboto',
+    font-weight: normal,
+    src: local("Roboto"), url('../assets/fonts/Roboto/Roboto-Regular.ttf')
+
+@font-face
+    font-family: 'Roboto-bold',
+    font-weight: bold,
+    src: local("Roboto"), url('../assets/fonts/Roboto/Roboto-Bold.ttf')
+
+@font-face
+    font-family: 'Roboto-light',
+    font-weight: lighter,
+    src: local("Roboto"), url('../assets/fonts/Roboto/Roboto-Light.ttf')
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: 'Roboto', var(--font-family), Arial, Helvetica, sans-serif
+
+body
+    min-height: 100vh
+
+h1, h2, h3, h4, p, b, a, li, label, input[type='text'], input[type='password'], textarea, span
+    color: black
+    padding: 0
+    margin: 0
+
+li
+    list-style-type: none
+
+input[type='text'], input[type='number'], input[type='password'], textarea, select
+    padding: 12px 15px
+    border-radius: 8px
+    background-color: white
+    border: none
+    transition: 0.2s
+
+    &:focus-visible
+        outline: none
+
+    &.primary
+        border: 1px solid $light-grey
+        &:hover
+            border: 1px solid rgba($light-blue-grey, 0.35)
+            box-shadow: 0px 0px 3px rgba($light-blue-grey, 0.35)
+        &:focus-visible
+            border: 1px solid rgba($light-blue-grey, 0.7)
+            box-shadow: 0px 0px 3px rgba($light-blue-grey, 0.7)
+
+    &.search
+        background-image: url(../assets/icons/search-icon.png)
+        background-position: 8px center
+        background-repeat: no-repeat
+        background-size: 20px
+        padding-left: 36px
+
+button
+    padding: 15px 25px
+    border-radius: 6px
+    font-weight: 600
+    color: white
+    transition: 0.2s
+    cursor: pointer
+    font-size: 14px
+    border: 0
+
+    &.primary
+        background-color: $yellow
+        &:hover
+            background-color: $dark-yellow
+
+    &.secondary
+        background-color: $dark-blue
+        &:hover
+            background-color: $darker-blue
+
+    &.cancel
+        background-color: $red
+        &:hover
+            background-color: $dark-red
+
+    &.rounded
+        border-radius: 100px
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 32px
+        height: 32px
+
+    &:disabled, &:disabled:hover
+        background-color: $lighter-grey
+        cursor: initial
+
+.noselect
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+.p-dialog .p-dialog-header
+    background: white
+
+p-table
+    tr
+        .center
+            text-align: center !important
+        .right
+            text-align: right !important

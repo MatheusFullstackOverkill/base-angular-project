@@ -1,0 +1,12 @@
+<div class="custom-input">
+    <div [formGroup]="form">
+        <div class="input-container" [ngClass]="{'has-value': value !== '', 'has-errors': errors && errors.length > 0, 'disabled': disabled}">
+            <label [htmlFor]="name" [ngClass]="{ 'textarea': textarea }">{{ label }}</label>
+            <input *ngIf="!textarea" id="{{name}}" class="primary" [ngClass]="{'without-label': label.length === 0}" [type]="type" [min]="min" [name]="name" [readOnly]="disabled" (input)="onChange($event)" [formControlName]="formControlName">
+            <textarea *ngIf="textarea" id="{{name}}" class="primary" [ngClass]="{'without-label': label.length === 0}" [name]="name" [readOnly]="disabled" (input)="onChange($event)" [formControlName]="formControlName"></textarea>
+        </div>
+    </div>
+    <div *ngIf="errors && errors.length > 0" class="errors">
+        <p *ngFor="let error of errors" class="error">{{ error }}</p>
+    </div>
+</div>

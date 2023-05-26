@@ -1,0 +1,10 @@
+<div class='custom-dialog {{customClass}}' [ngClass]="{'shown': isVisible}">
+    <div class="custom-dialog-header" [ngClass]="{'with-shadow': scrolledContent}">
+        <h1 *ngIf="title !== ''" class="title">{{title}}</h1>
+        <p *ngIf="showCloseBtn" class="close-btn" (click)="toggleModal()">Fechar</p>
+    </div>
+    <div class="custom-dialog-content">
+        <ng-content></ng-content>
+    </div>
+</div>
+<div *ngIf='isVisible' class="custom-dialog-container" (click)="allowOutsideClick && toggleModal()"></div>

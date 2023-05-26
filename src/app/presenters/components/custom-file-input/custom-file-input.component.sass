@@ -1,0 +1,61 @@
+@import ../../../../styles/variables.sass
+    
+.image-uploader
+    width: 100%
+    padding: 40px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    background: rgba($light-grey, 0.5)
+    border-radius: 15px
+    cursor: pointer
+    transition: 0.4s
+    &.dragged-over
+        background: $blue-grey
+        p
+            color: white
+    img
+        width: 25px
+        margin-bottom: 10px
+        transition: 0.4s
+
+.files
+    width: 100%
+    display: flex
+    flex-direction: column
+    
+    .file
+        width: 100%
+        padding: 10px
+        display: flex
+        flex-direction: row
+        align-items: center
+        border-bottom: 1px solid $grey
+        &:last-of-type
+            border-bottom: none
+
+        .preview
+            width: 250px
+            margin-right: 10px
+
+        .remove-file
+            margin-left: auto
+            cursor: pointer
+            img
+                width: 25px
+                height: 25px
+                fill: $red
+                transition: 0.2s
+                &:hover
+                    fill: $dark-red
+
+.errors
+    width: 100%
+    display: flex
+    flex-direction: column
+    margin-top: 5px
+    gap: 5px
+
+    .error
+        color: $red

@@ -1,0 +1,61 @@
+@import src/styles/variables.sass
+    
+.menu
+    width: 300px
+    height: 100vh
+    background: white
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 1000
+    background: $dark-blue
+
+    ul
+        width: 100%
+        margin-top: 50px
+        li
+            width: 100%
+            display: flex
+            flex-direction: column
+            align-items: center
+            cursor: pointer
+            *
+                color: white
+
+            &.selected
+                background: $darker-blue
+            &.toggled
+                .arrow-icon
+                    transform: rotate(180deg)
+
+            .route-name-container
+                width: 100%
+                display: flex
+                flex-direction: row
+                align-items: center
+                padding: 15px
+                gap: 10px
+                transition: 0.2s
+                &:hover
+                    background: $darker-blue-mid
+
+                img
+                    width: 35px
+                    height: 25px
+
+                .arrow-icon
+                    margin-left: auto
+                    width: 20px
+                    height: 20px
+                    transition: 0.3s
+
+            .submenu
+                overflow: hidden
+                transition: 0.3s
+                ul
+                    margin-top: 0
+                    .route-name-container
+                        padding-left: 40px

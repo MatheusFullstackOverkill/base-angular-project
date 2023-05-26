@@ -1,0 +1,31 @@
+<div class="menu">
+    <ul class="noselect">
+        <li 
+        *ngFor="let route of routes; let i = index;" 
+        [routerLink]="route.link" 
+        [class]="'route-'+i"
+        [ngClass]="{ 'selected': selectedRoute === route.link, 'toggled': route.toggled}"
+        (click)="route.link && setCurrentPage(route.link)"
+        (click)="route.submenu && toggleSubmenu(i)">
+            <div class="route-name-container">
+                <img [src]="route.icon"/>
+                <span>{{ route.label }}</span>
+                <img *ngIf="route.submenu" src="../../../../assets/icons/arrow-down-menu-white.svg" class="arrow-icon" />
+            </div>
+            <div *ngIf="route.submenu" class="submenu" [ngStyle]="{ 'height': route.toggled ? route.submenu.height+'px' : '0px' }">
+                <ul>
+                    <li 
+                    *ngFor="let subroute of route.submenu.routes;" 
+                    [routerLink]="subroute.link" 
+                    [ngClass]="{ 'selected': selectedRoute === subroute.link}"
+                    (click)="subroute.link && setCurrentPage(subroute.link)">
+                        <div class="route-name-container">
+                            <img [src]="subroute.icon"/>
+                            <span>{{ subroute.label }}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,19 @@
+<label for="file" (click)="validateClick($event)">
+    <div class="image-uploader" [ngClass]="{'dragged-over': draggedOver}" (dragover)="dragOverHandler($event)" (dragend)="dropHandler($event)" (drop)="dropHandler($event)">
+        <img src="../../../../assets/icons/upload.svg"/>
+        <p>Arraste ou escolha um arquivo</p>
+        <input id="file" style="display: none;" name="file" type="file" (change)="addFile($event)">
+    </div>
+</label>
+<div *ngIf="files.length > 0" class="files">
+    <div *ngFor="let file of files;" class="file">
+        <!-- <img class="preview" [src]="createURL(file)"> -->
+        <p >{{ file.name }}</p>
+        <span class="remove-file" (click)="deleteFile()">
+            <img src="../../../../assets/icons/close.svg"/>
+        </span>
+    </div>
+</div>
+<div *ngIf="errors && errors.length > 0" class="errors">
+    <p *ngFor="let error of errors" class="error">{{ error }}</p>
+</div>

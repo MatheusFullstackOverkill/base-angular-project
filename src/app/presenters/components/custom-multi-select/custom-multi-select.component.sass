@@ -1,0 +1,125 @@
+@import ../../../../styles/variables.sass
+@import ../../../../styles/main.sass
+
+:host
+    width: 100%
+
+.custom-multiselect
+    width: 100%
+
+    .select-container
+        width: 100%
+        position: relative
+        &:focus-within,  &.has-value
+            .input-container label
+                top: 10px
+                font-size: 9px
+        &.has-errors
+            .input-container input
+                border: 1px solid rgba($red, 0.35) !important
+                box-shadow: 0px 0px 3px rgba($red, 0.35) !important
+        &.disabled
+            pointer-events: none
+            &::before
+                content: ''
+                position: absolute
+                inset: 0
+                z-index: 1000
+            .input-container input
+                background-color: $lighter-grey
+                &:hover
+                    border: 1px solid $lighter-grey
+                    box-shadow: initial
+        .input-container
+            width: 100%
+            position: relative
+            &::after
+                content: ''
+                width: 20px
+                height: 20px
+                position: absolute
+                right: 10px
+                top: 50%
+                transform: translateY(-50%)
+                background-image: url(../../../../assets/icons/arrow-down-menu.svg)
+                background-repeat: no-repeat
+                background-position: center
+                transition: 0.4s
+                cursor: pointer
+                z-index: 100
+            &.opened::after
+                transform: translateY(-50%) rotate(180deg)
+            label
+                color: black
+                display: inline-block
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                left: 15px
+                z-index: 1000
+                transition: 0.2s
+                color: $blue-grey
+                cursor: pointer
+            input
+                width: 100%
+                padding: 20px 25px 10px 15px
+                cursor: pointer
+                &.without-label
+                    padding: 15px 25px 15px 15px
+                &:disabled
+                    background-color: $lighter-grey
+                    &:hover
+                        border: 1px solid $lighter-grey
+                        box-shadow: initial
+
+                option
+                    font-size: 18px
+
+        .options
+            position: absolute
+            top: 100%
+            width: 100%
+            z-index: 100
+            background: white
+            padding: 0
+            overflow: hidden
+            z-index: 2000
+            max-height: 380px
+            overflow: auto
+            .search-container
+                padding: 5px
+                &, & input
+                    width: 100%
+            li
+                padding: 10px
+                cursor: pointer
+                transition: 0.4s
+                border-bottom: 0.5px solid $light-grey
+                display: flex
+                flex-direction: row
+                align-items: center
+                &:hover
+                    background: $light-grey
+                &.disabled, &.disabled:hover
+                    background-color: $lighter-grey
+                    cursor: initial
+                .checkbox
+                    width: 20px
+                    height: 20px
+                    border-radius: 5px
+                    background: $light-grey
+                    margin-right: 10px
+                    display: block
+                &.selected
+                    .checkbox
+                        background: $purple
+
+    .errors
+        width: 100%
+        display: flex
+        flex-direction: column
+        margin-top: 5px
+        gap: 5px
+
+        .error
+            color: $red

@@ -1,0 +1,45 @@
+<div #customSelect class="custom-multiselect">
+    <div *ngIf="form && formControlName" [formGroup]="form">
+        <div class="select-container" [ngClass]="{'has-value': values.length > 0, 'has-errors': errors && errors.length > 0, 'disabled': disable}">
+            <div class="input-container" [ngClass]="{'opened': showOptions}" (click)="toggleOptions($event)">
+                <label *ngIf="label" [htmlFor]="name">{{ label }}</label>
+                <input id="{{name}}" class="primary" [ngClass]="{'without-label': label.length === 0}" [type]="type" [name]="name" [readOnly]="true" formControlName="{{ formControlName }}">
+            </div>
+            <div *ngIf="showOptions" class="options box">
+                <div class="search-container">
+                    <input type="text" class="primary search" placeholder="Buscar..." (keyup)="onSearch($event)"/>
+                </div>
+                <ul>
+                    <li (mousedown)="onSelectOption('')">Limpar</li>
+                    <li *ngFor="let option of shownOptions" [ngClass]="{'selected': values.includes(option.value), 'disabled': disabledOptions.includes(option.value)}" (mousedown)="onSelectOption(option.value)">
+                        <span class="checkbox"></span>
+                        <img *ngIf="option.value_img" src="{{ option.value_img }}" />
+                        {{ option.label }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!form || !formControlName" class="select-container" [ngClass]="{'has-value': values.length > 0, 'has-errors': errors && errors.length > 0, 'disabled': disable}">
+        <div class="input-container" [ngClass]="{'opened': showOptions}" (click)="toggleOptions($event)">
+            <label *ngIf="label" [htmlFor]="name">{{ label }}</label>
+            <input id="{{name}}" class="primary" [ngClass]="{'without-label': label.length === 0}" [type]="type" [name]="name" [readOnly]="true">
+        </div>
+        <div *ngIf="showOptions" class="options box">
+            <div class="search-container">
+                <input type="text" class="primary search" placeholder="Buscar..." (keyup)="onSearch($event)"/>
+            </div>
+            <ul>
+                <li (mousedown)="onSelectOption('')">Limpar</li>
+                <li *ngFor="let option of shownOptions" (mousedown)="!disabledOptions.includes(option.value) && onSelectOption(option.value)" [ngClass]="{'selected': values.includes(option.value), 'disabled': disabledOptions.includes(option.value)}">
+                    <span class="checkbox"></span>
+                    <img *ngIf="option.value_img" src="{{ option.value_img }}" />
+                    {{ option.label }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="errors && errors.length > 0" class="errors">
+        <p *ngFor="let error of errors" class="error">{{ error }}</p>
+    </div>
+</div>

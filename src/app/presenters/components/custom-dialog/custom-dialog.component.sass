@@ -1,0 +1,56 @@
+.custom-dialog-container
+    position: fixed
+    z-index: 90000
+    background-color: rgba(0, 0, 0, 0.4)
+    inset: 0
+
+.custom-dialog
+    background-color: white
+    border-radius: 10px
+    transition: 0.2s
+    width: 800px
+    animation: show-modal 0.2s
+    position: fixed
+    z-index: 100000
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) scale(0)
+
+    &.shown
+        transform: translate(-50%, -50%) scale(1)
+
+    .custom-dialog-header
+        width: 100%
+        display: flex
+        padding-bottom: 10px
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        padding: 20px 20px 10px
+        transition: 0.1s
+
+        &.with-shadow
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4)
+
+        .close-btn
+            padding: 5px
+            text-decoration: underline
+            cursor: pointer
+            margin-left: auto
+
+    .custom-dialog-content
+        padding: 20px
+        max-height: 85vh
+        margin: 5px
+        overflow: auto
+
+    @keyframes show-modal
+        0%
+            transform: translate(-50%, -50%) scale(0)
+        100%
+            transform: translate(-50%, -50%) scale(1)
+
+    @media screen and (max-width: 800px)
+        width: 90%
+
+            
